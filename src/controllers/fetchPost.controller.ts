@@ -13,12 +13,10 @@ export async function get(
         const errorString: string = String(error);
 
         if (errorString.includes("404")) {
-            next({
+            return next({
                 statusCode: 404,
                 message: "Post not found",
             } as APIError);
-
-            return;
         }
 
         console.error(`Error while fetching the post: ${error}`);

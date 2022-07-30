@@ -13,7 +13,9 @@ export function validator(
             statusCode: 400,
             message: "No url provided",
         } as APIError);
-    } else if (!url.toString().startsWith("https://www.instagram.com")) {
+    } else if (
+        !/(https:\/\/)?www.instagram.com\/(p|reel|tv)/.test(url as string)
+    ) {
         return next({
             statusCode: 406,
             message: "Invalid url",

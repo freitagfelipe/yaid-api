@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getLinks } from "../services/api.service";
+import { getLinks } from "../services/fetchPost.service";
 import { APIError } from "../types/types";
 
 export async function get(

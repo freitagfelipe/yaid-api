@@ -1,4 +1,4 @@
-export interface ResultLink {
+export interface Result {
     count: number;
     urls: string[];
 }

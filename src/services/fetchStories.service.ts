@@ -1,9 +1,9 @@
 import { InstagramAPI } from "../API/InstagramAPI";
 import { IGStoriesMetadata } from "insta-fetcher/dist/types";
-import { ResultLink } from "../types/types";
+import { Result } from "../types/types";
 import { igApi } from "insta-fetcher";
 
-export async function getLinks(url: string): Promise<ResultLink> {
+export async function getLinks(url: string): Promise<Result> {
     const api: igApi = await new InstagramAPI().getAPI();
 
     let posts: IGStoriesMetadata;

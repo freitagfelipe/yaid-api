@@ -18,7 +18,7 @@ export function validator(
             message: `No ${isFetchPost ? "url" : "user"} provided`,
         } as APIError);
     } else if (
-        url &&
+        isFetchPost &&
         !/(https:\/\/)?www.instagram.com\/(p|reel|tv)/.test(url as string)
     ) {
         return next({

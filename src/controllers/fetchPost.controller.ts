@@ -8,7 +8,7 @@ export async function get(
     next: NextFunction
 ): Promise<void> {
     try {
-        res.json(await getLinks(req.query.url!.toString()));
+        res.status(200).json(await getLinks(req.query.url!.toString()));
     } catch (error) {
         const errorString: string = String(error);
 

@@ -15,7 +15,7 @@ export async function get(
         if (errorString.includes("404")) {
             return next({
                 statusCode: 404,
-                message: "Post not found or from private account",
+                message: "Post not found or from a private account",
             } as APIError);
         }
 

@@ -20,8 +20,8 @@ export class InstagramAPI {
         }
     }
 
-    public async getAPI(): Promise<igApi> {
-        return await InstagramAPI.asyncHandler;
+    public get API() {
+        return InstagramAPI.asyncHandler;
     }
 
     private storeCookie(cookies: string): void {

@@ -2,7 +2,6 @@ import { igApi, getCookie } from "insta-fetcher";
 import { existsSync, writeFileSync, readFileSync } from "fs";
 
 export class InstagramAPI {
-    private static API: igApi;
     private static instanciated: boolean = false;
     private static asyncHandler: Promise<igApi>;
 
@@ -13,9 +12,9 @@ export class InstagramAPI {
             InstagramAPI.asyncHandler = new Promise(async (resolve) => {
                 const cookies: string = await this.getCookies();
 
-                InstagramAPI.API = new igApi(cookies);
+                const API: igApi = new igApi(cookies);
 
-                resolve(InstagramAPI.API);
+                resolve(API);
             });
         }
     }

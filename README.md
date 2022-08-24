@@ -36,3 +36,8 @@ interface Result {
         1. Fails with a 403 if the profile is private.
         1. Fails with a 404 if the service doesn't find the user or the user didn't post any stories.
         1. Fails with 500 if something related to the internal service logic doesn't work as expected.
+
+## Acknowledgments
+
+- [Antonio Lucas](https://github.com/antoniolucas30) for the README typo review!
+- [Antônio Hugo](https://github.com/hugorplobo) for the idea to use a monostate pattern in the InstagramAPI!

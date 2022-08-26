@@ -9,10 +9,7 @@ export function validator(
     const isFetchPost = req.baseUrl.includes("fetch-post");
     const { url, user } = req.query;
 
-    if (
-        (isFetchPost && url === undefined) ||
-        (!isFetchPost && user === undefined)
-    ) {
+    if ((isFetchPost && !url) || (!isFetchPost && !user)) {
         return next({
             statusCode: 400,
             message: `No ${isFetchPost ? "url" : "user"} provided`,

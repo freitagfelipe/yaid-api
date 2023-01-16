@@ -27,5 +27,5 @@ app.use((err: APIError, _req: Request, res: Response, _next: NextFunction) => {
 });
 
 app.listen(port, () => {
-    console.log(`Listen to the port ${port}`);
+    console.log(`Listening the port ${port}`);
 });

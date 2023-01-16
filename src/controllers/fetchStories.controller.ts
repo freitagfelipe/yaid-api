@@ -22,7 +22,7 @@ export async function get(
             errorString.includes("Stories not available")
         ) {
             const message = errorString.includes("not available")
-                ? "The user hasn't posted any stories today"
+                ? "The user has not posted any stories today"
                 : "Private profile";
             const statusCode = errorString.includes("not available")
                 ? 404

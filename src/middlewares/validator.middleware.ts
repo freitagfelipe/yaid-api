@@ -1,4 +1,4 @@
-import { APIError } from "../types/types";
+import { IAPIError } from "../types/types";
 import { NextFunction, Request, Response } from "express";
 
 export function validator(
@@ -7,13 +7,22 @@ export function validator(
     next: NextFunction
 ): void {
     const isFetchPost = req.baseUrl.includes("fetch-post");
+    const isGetContent = req.baseUrl.includes("get-content");
     const { url, user } = req.query;
 
-    if ((isFetchPost && !url) || (!isFetchPost && !user)) {
+    if (isGetContent && !url) {
+        return next({
+            statusCode: 400,
+            message: "No url provided",
+        } as IAPIError);
+    } else if (
+        !isGetContent &&
+        ((isFetchPost && !url) || (!isFetchPost && !user))
+    ) {
         return next({
             statusCode: 400,
             message: `No ${isFetchPost ? "url" : "user"} provided`,
-        } as APIError);
+        } as IAPIError);
     } else if (
         isFetchPost &&
         !/(https:\/\/)?www.instagram.com\/(p|reel|tv)/.test(url as string)
@@ -21,7 +30,7 @@ export function validator(
         return next({
             statusCode: 406,
             message: "Invalid url",
-        } as APIError);
+        } as IAPIError);
     }
 
     next();

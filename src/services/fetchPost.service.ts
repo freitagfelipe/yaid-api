@@ -1,9 +1,9 @@
 import { InstagramAPI } from "../API/InstagramAPI";
 import { IPostModels } from "insta-fetcher/dist/types";
-import { Result } from "../types/types";
+import { IFetchContentResult } from "../types/types";
 import { igApi } from "insta-fetcher";
 
-export async function getLinks(url: string): Promise<Result> {
+export async function getLinks(url: string): Promise<IFetchContentResult> {
     const api: igApi = await new InstagramAPI().API;
 
     let posts: IPostModels;

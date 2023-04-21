@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getLinks } from "../services/fetchPost.service";
-import { APIError } from "../types/types";
+import { IAPIError } from "../types/types";
 
 export async function get(
     req: Request,
@@ -16,7 +16,7 @@ export async function get(
             return next({
                 statusCode: 404,
                 message: "Post not found or from a private account",
-            } as APIError);
+            } as IAPIError);
         }
 
         console.error(`Error while fetching the post: ${error}`);
@@ -24,6 +24,6 @@ export async function get(
         next({
             statusCode: 500,
             message: "Something went wrong",
-        } as APIError);
+        } as IAPIError);
     }
 }

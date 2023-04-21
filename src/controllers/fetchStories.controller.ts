@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getLinks } from "../services/fetchStories.service";
-import { APIError } from "../types/types";
+import { IAPIError } from "../types/types";
 
 export async function get(
     req: Request,
@@ -16,7 +16,7 @@ export async function get(
             return next({
                 statusCode: 404,
                 message: "User not found",
-            } as APIError);
+            } as IAPIError);
         } else if (
             errorString.includes("Private profile") ||
             errorString.includes("Stories not available")
@@ -31,7 +31,7 @@ export async function get(
             return next({
                 statusCode,
                 message,
-            } as APIError);
+            } as IAPIError);
         }
 
         console.error(`Error while fetching the user stories: ${error}`);
@@ -39,6 +39,6 @@ export async function get(
         next({
             statusCode: 500,
             message: "Something went wrong",
-        } as APIError);
+        } as IAPIError);
     }
 }

@@ -1,14 +1,23 @@
-export interface Result {
+export interface IFetchContentResult {
     count: number;
     urls: string[];
 }
 
-export interface APIError {
+export interface IAPIError {
     statusCode: number;
     message: string;
 }
 
-export interface APICheckResult {
-    failed: boolean;
-    error?: APIError;
+export class APIError extends Error implements IAPIError {
+    statusCode: number;
+
+    constructor(message: string, statusCode: number) {
+        super(message);
+
+        this.statusCode = statusCode;
+    }
 }
+
+export type IGetFileResult = string;
+
+export type FileType = "jpg" | "mp4";
